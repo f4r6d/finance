@@ -303,7 +303,7 @@ def sell():
 
         db.execute("UPDATE users SET cash = ? WHERE id = ?", total, session["user_id"])
 
-        db.execute("INSERT INTO trans (user_id, symbol, shares, price) VALUES(?, ?, ?, ?)", session["user_id"], sym, sh * -1, price)
+        db.execute("INSERT INTO trans (user_id, symbol, shares, price) VALUES(?, ?, ?, ?)", session["user_id"], sym, int(sh) * -1, price)
 
         return redirect('/')
 
