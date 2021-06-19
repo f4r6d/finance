@@ -80,7 +80,7 @@ def buy():
         if not request.form.get('shares'):
             return apology("enter how many shares")
 
-        symbol = request.form.get('symbol')
+        symbol = request.form.get('symbol').upper()
         if lookup(symbol):
             user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
             total = user[0]['cash']
@@ -281,7 +281,7 @@ def sell():
             stocks[row['symbol']] = row['sum(shares)']
 
     if request.method == "POST":
-        sym = request.form.get('symbol')
+        sym = request.form.get('symbol').upper()
         if not sym:
             return apology("select one stock to sell")
 
