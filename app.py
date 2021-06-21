@@ -242,7 +242,7 @@ def register():
     """Register user"""
     if request.method == 'POST':
 
-        username = request.form.get('username')
+        username = request.form.get('username').lower()
         password = request.form.get('password')
         confirmation = request.form.get('confirmation')
 
@@ -255,12 +255,12 @@ def register():
         if password != confirmation:
             return apology("passwords dont match")
 
-        already = db.execute("SELECT * FROM users WHERE username = ?", request.form.get("username"))
+        already = db.execute("SELECT * FROM users WHERE username = ?", username)
 
         if already:
             return apology("username has been taken, try another")
         else:
-            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username.lower(), generate_password_hash(password))
+            db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, generate_password_hash(password))
 
             rows = db.execute("SELECT * FROM users WHERE username = ?", username)
 
