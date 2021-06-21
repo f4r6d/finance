@@ -284,8 +284,8 @@ def sell():
 
     stocks = {}
     for row in rows:
-        if row['sum(shares)'] != 0:
-            stocks[row['symbol']] = row['sum(shares)']
+        if row['sum'] != 0:
+            stocks[row['symbol']] = row['sum']
 
     if request.method == "POST":
         sym = request.form.get('symbol').upper()
