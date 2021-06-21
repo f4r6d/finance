@@ -57,11 +57,11 @@ def index():
     stocks = []
     total = 0
     for row in rows:
-        if row['sum(shares)'] != 0:
+        if row['sum'] != 0:
             stock = {}
             stock['symbol'] = row['symbol'].upper()
             stock['name'] = lookup(row['symbol'])['name']
-            stock['shares'] = row['sum(shares)']
+            stock['shares'] = row['sum']
             stock['price'] = lookup(row['symbol'])['price']
             stock['total'] = usd(stock['price'] * stock['shares'])
             total += stock['price'] * stock['shares']
