@@ -43,7 +43,7 @@ db = SQL(uri)
 
 # db.execute("CREATE TABLE trans (user_id SERIAL , symbol TEXT NOT NULL, shares NUMERIC NOT NULL, price NUMERIC NOT NULL DEFAULT 0, ts  TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(user_id) REFERENCES users(id))")
 
-db.execute("SET TIMEZONE='Asia/Tehran')
+db.execute("SET TIMEZONE='Asia/Tehran'")
 
 
 # Make sure API key is set
